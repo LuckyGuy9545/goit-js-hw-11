@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 .is-hidden {
   opacity: 0;
   pointer-events: none;
@@ -29,6 +33,7 @@
 }
 
 .info__item {
+  color: saddlebrown;
   font-size: small;
   display: flex;
   flex-direction: column;
