@@ -43,8 +43,13 @@ async function onSubmitForm(event) {
     const response = await galleryFetch(searchQuery, currentPage);
     currentHits = response.hits.length;
 
+    if (!searchQuery) {
+        return;
+}
+
     if (!response.totalHits) {
         refs.gallery.innerHTML = '';
+        refs.loadMoreBtn.classList.add('is-hidden');
         return Notify.failure('Sorry, there are no images matching your search query. Please try again.')
     }
 
