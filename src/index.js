@@ -39,14 +39,14 @@ async function onSubmitForm(event) {
     searchQuery = event.currentTarget.searchQuery.value;
     currentPage = 1;
     console.log(searchQuery);
-    
-//== 4.1.
-    if (!searchQuery) {
-        return;
-    }
 
     const response = await galleryFetch(searchQuery, currentPage);
     currentHits = response.hits.length;
+
+    if (!response.totalHits) {
+        refs.gallery.innerHTML = '';
+        return Notify.failure('Sorry, there are no images matching your search query. Please try again.')
+    }
 
 //== 3.1. 
     if (response.totalHits > 40) {
